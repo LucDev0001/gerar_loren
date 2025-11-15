@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Gerar Lorem — gerar_loren.html</title>
+    <meta
+      name="description"
+      content="Página simples para gerar parágrafos Lorem Ipsum."
+    />
+    <style>
+      :root {
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial;
+        line-height: 1.5;
+        color: #111;
+      }
+      body {
+        margin: 0;
+        padding: 2rem;
+        background: #f7f7fb;
+      }
+      .container {
+        max-width: 820px;
+        margin: 0 auto;
+        background: #fff;
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 6px 18px rgba(20, 20, 40, 0.06);
+      }
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+      }
+      h1 {
+        font-size: 1.125rem;
+        margin: 0;
+      }
+      .controls {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+      }
+      input[type="number"] {
+        width: 4.5rem;
+        padding: 0.4rem;
+        border: 1px solid #d0d7de;
+        border-radius: 6px;
+      }
+      button {
+        padding: 0.45rem 0.7rem;
+        border: 0;
+        background: #0366d6;
+        color: #fff;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+      button:active {
+        transform: translateY(1px);
+      }
+      #output {
+        margin-top: 1rem;
+      }
+      p {
+        margin: 0 0 0.9rem;
+      }
+      footer {
+        font-size: 0.85rem;
+        color: #555;
+        margin-top: 1.25rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Gerar Lorem Ipsum</h1>
+        <div class="controls" aria-label="Controles de geração">
+          <label for="count">Parágrafos</label>
+          <input id="count" type="number" min="1" max="20" value="3" />
+          <button id="generate">Gerar</button>
+        </div>
+      </header>
+
+      <main>
+        <div id="output" aria-live="polite"></div>
+      </main>
+
+      <footer>
+        Dica: copie o texto gerado para usar em protótipos ou layouts.
+      </footer>
+    </div>
+
+    <script>
+      (function () {
+        const LOREM = [
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.",
+          "Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris.",
+          "Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla.",
+          "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
+          "Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor.",
+          "Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis.",
+        ];
+
+        function makeParagraph() {
+          // create a paragraph composed of 4-7 sentences picked from LOREM
+          const count = 4 + Math.floor(Math.random() * 4);
+          let parts = [];
+          for (let i = 0; i < count; i++) {
+            parts.push(LOREM[Math.floor(Math.random() * LOREM.length)]);
+          }
+          return parts.join(" ");
+        }
+
+        function generate(n) {
+          n = Math.max(1, Math.min(20, Number(n) || 1));
+          const container = document.getElementById("output");
+          container.innerHTML = "";
+          for (let i = 0; i < n; i++) {
+            const p = document.createElement("p");
+            p.textContent = makeParagraph();
+            container.appendChild(p);
+          }
+        }
+
+        document.getElementById("generate").addEventListener("click", () => {
+          const n = document.getElementById("count").value;
+          generate(n);
+        });
+
+        // generate initial content
+        generate(document.getElementById("count").value);
+      })();
+    </script>
+  </body>
+</html>
