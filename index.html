@@ -200,9 +200,42 @@
         font-size: 0.9rem;
         color: var(--color-text-secondary);
         margin-top: 2rem;
-        padding-top: 1rem;
+        padding-top: 1.5rem; /* Um pouco mais de espaço */
         border-top: 1px solid var(--color-border);
         text-align: center;
+        line-height: 1.5; /* Melhora a leitura */
+      }
+
+      /* Remove a margem padrão dos parágrafos no rodapé */
+      footer p {
+        margin: 0.25rem 0;
+      }
+
+      /* Estiliza os links do rodapé */
+      footer a {
+        color: var(--color-primary); /* Cor azul principal */
+        text-decoration: none;
+        font-weight: 500;
+        transition: text-decoration 0.2s;
+      }
+
+      footer a:hover {
+        text-decoration: underline; /* Sublinhado ao passar o mouse */
+      }
+      
+      /* Estiliza a segunda linha de links (mais sutil) */
+      .footer-links {
+        font-size: 0.85rem;
+      }
+
+      .footer-links a {
+        color: var(--color-text-secondary); /* Cinza secundário */
+        font-weight: 500;
+      }
+
+      /* Ao passar o mouse, os links secundários ficam azuis */
+      .footer-links a:hover {
+        color: var(--color-primary);
       }
     </style>
   </head>
@@ -261,8 +294,22 @@
           </p>
         </section>
       </main>
+<footer>
+        <p>
+          © 2025 | Desenvolvido com ❤️ por 
+          <a href="[SEU-LINK-DE-PERFIL-AQUI]" target="_blank" rel="noopener noreferrer">Seu Nome</a>.
+        </p>
+        <p class="footer-links">
+          <a href="[LINK-DO-REPOSITORIO-DESTE-PROJETO]" target="_blank" rel="noopener noreferrer">Ver o código no GitHub</a>
+          &bull;
+          <a href="[SEU-LINK-DE-PORTFOLIO-OU-REDE-SOCIAL]" target="_blank" rel="noopener noreferrer">Meu Portfólio</a>
+        </p>
+      </footer>
 
-      <footer>Seu Nome ou Nome do Projeto © 2025</footer>
+    </div>
+
+
+
     </div>
 
     <script>
